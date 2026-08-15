@@ -6,6 +6,7 @@
 #include "Components/ActorComponent.h"
 #include "InteractableComponent.generated.h"
 
+class AZoneMarkerActor;
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class ZONECLEAR_API UInteractableComponent : public UActorComponent
@@ -22,7 +23,7 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Interaction")
 	void OnInteract();
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Interaction")
+	UPROPERTY(BlueprintReadOnly, Category = "Interaction")
 	AZoneMarkerActor* OwnerZone;
 
 protected:

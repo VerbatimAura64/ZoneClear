@@ -2,8 +2,8 @@
 
 
 #include "InteractableComponent.h"
+#include "ZoneMarkerActor.h"
 
-class AZoneMarkerActor;
 // Sets default values for this component's properties
 UInteractableComponent::UInteractableComponent()
 {
