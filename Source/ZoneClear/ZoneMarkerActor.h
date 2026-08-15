@@ -35,6 +35,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Zone")
 	void ClearPopulation();
 
+	UFUNCTION(BlueprintCallable, Category = "Zone")
+	void OnTargetFound();
+
 private:
 	UPROPERTY()
 	TArray<AActor*> SpawnedInstances;

@@ -62,6 +62,13 @@ void AZoneMarkerActor::ClearPopulation()
 	SpawnedInstances.Empty();
 }
 
+void AZoneMarkerActor::OnTargetFound()
+{
+	if (bResolved) return;
+	bResolved = true;
+	UE_LOG(LogTemp, Warning, TEXT("Target found! Zone resolved."));
+}
+
 TSubclassOf<AActor> AZoneMarkerActor::GetWeightedDecoy()
 {
 	if (Pool->DecoyPrefabs.Num() == 0) return nullptr;
