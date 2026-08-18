@@ -16,7 +16,8 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Interaction")
 	float InteractRange = 1000.0f;
-
+	
+	UFUNCTION(BlueprintCallable, Category = "Interaction")
 	void TryInteract();
 
 protected:
