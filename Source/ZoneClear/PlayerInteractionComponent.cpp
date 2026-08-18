@@ -61,7 +61,10 @@ void UPlayerInteractionComponent::TryInteract()
 			Interactable->OnInteract();
 		}
 	}
-	DrawDebugLine(GetWorld(), Start, bHit ? HitResult.ImpactPoint : End,  FColor::Green, false, 1.0f);
+	DrawDebugLine(GetWorld(), Start, bHit ? HitResult.ImpactPoint : End,  FColor::Red, false, 1.0f);
+	UE_LOG(LogTemp, Warning, TEXT("Line trace - Hit: %s, Location: %s"),
+		bHit ? TEXT("YES") : TEXT("NO"),
+		bHit ? *HitResult.GetActor()->GetName() : TEXT("Nothing"));
 }
 
 

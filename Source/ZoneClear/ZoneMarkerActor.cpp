@@ -2,6 +2,7 @@
 
 
 #include "ZoneMarkerActor.h"
+#include "InteractableComponent.h"
 
 // Sets default values
 AZoneMarkerActor::AZoneMarkerActor()
@@ -45,6 +46,14 @@ void AZoneMarkerActor::Populate()
 
         if (Spawned)
         {
+			UInteractableComponent* Interactable = Spawned->FindComponentByClass<UInteractableComponent>();
+			if (Interactable) {
+				Interactable->bIsTarget = bIsTarget;
+				Interactable->OwnerZone = this;
+			}
+			if (!Interactable) {
+				UE_LOG(LogTemp, Warning, TEXT("NPC not interactable."));
+			}
             SpawnedInstances.Add(Spawned);
         }
     }
