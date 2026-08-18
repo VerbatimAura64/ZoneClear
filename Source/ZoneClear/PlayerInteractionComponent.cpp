@@ -34,7 +34,7 @@ void UPlayerInteractionComponent::TryInteract()
 	if (!CameraManager) return;
 
 	FVector Start = CameraManager->GetCameraLocation();
-	FVector End = Start * (CameraManager->GetCameraRotation().Vector() * InteractRange);
+	FVector End = Start + (CameraManager->GetCameraRotation().Vector() * InteractRange);
 
 	FHitResult HitResult;
 	FCollisionQueryParams Params;
@@ -61,7 +61,7 @@ void UPlayerInteractionComponent::TryInteract()
 			Interactable->OnInteract();
 		}
 	}
-	DrawDebugLine(GetWorld(), Start, bHit ? HitResult.ImpactPoint : End,  FColor::Red, false, 1.0f);
+	DrawDebugLine(GetWorld(), Start, bHit ? HitResult.ImpactPoint : End,  FColor::Red, false, 15.0f);
 	UE_LOG(LogTemp, Warning, TEXT("Line trace - Hit: %s, Location: %s"),
 		bHit ? TEXT("YES") : TEXT("NO"),
 		bHit ? *HitResult.GetActor()->GetName() : TEXT("Nothing"));
