@@ -38,6 +38,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Zone")
 	void OnTargetFound();
 
+	UPROPERTY(EditAnywhere, Category = "Narrative")
+	FText FragmentText;
+
 private:
 	UPROPERTY()
 	TArray<AActor*> SpawnedInstances;

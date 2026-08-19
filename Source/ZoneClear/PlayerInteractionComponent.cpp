@@ -7,6 +7,7 @@
 #include "GameFramework/PlayerController.h"
 #include "Kismet/GameplayStatics.h"
 #include "DrawDebugHelpers.h"
+#include "ZoneMarkerActor.h"
 
 // Sets default values for this component's properties
 UPlayerInteractionComponent::UPlayerInteractionComponent()
@@ -59,6 +60,9 @@ void UPlayerInteractionComponent::TryInteract()
 		if (Interactable)
 		{
 			Interactable->OnInteract();
+			if (Interactable->bIsTarget && Interactable->OwnerZone) {
+				OnFragmentReceived.Broadcast(Interactable->OwnerZone->FragmentText);
+			}
 		}
 	}
 	DrawDebugLine(GetWorld(), Start, bHit ? HitResult.ImpactPoint : End,  FColor::Red, false, 15.0f);

@@ -5,6 +5,7 @@
 #include "Components/ActorComponent.h"
 #include "PlayerInteractionComponent.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FFragText, FText, Text);
 UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class ZONECLEAR_API UPlayerInteractionComponent : public UActorComponent
 {
@@ -16,6 +17,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Interaction")
 	float InteractRange = 1000.0f;
+
+	UPROPERTY(BlueprintAssignable, Category = "Interaction")
+	FFragText OnFragmentReceived;
 	
 	UFUNCTION(BlueprintCallable, Category = "Interaction")
 	void TryInteract();
