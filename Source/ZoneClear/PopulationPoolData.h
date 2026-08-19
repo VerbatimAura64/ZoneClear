@@ -2,9 +2,11 @@
 
 #pragma once
 
+#include "Math/Color.h"
 #include "CoreMinimal.h"
 #include "Engine/DataAsset.h"
 #include "PopulationPoolData.generated.h"
+
 
 /**
  * 
@@ -17,6 +19,7 @@ struct FWeightedPrefab {
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, meta = (ClampMin = "0.0"))
 	float Weight = 1.0f;
+
 };
 
 UCLASS()
@@ -31,4 +34,10 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Population")
 	TSubclassOf<AActor> TargetPrefab;
 	
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Camouflage")
+	FLinearColor TargetColor;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Camouflage")
+	FLinearColor DecoyBaseColor;
+
 };
