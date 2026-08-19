@@ -2,6 +2,7 @@
 
 
 #include "ZoneMarkerActor.h"
+#include "Materials/MaterialInstanceDynamic.h"
 #include "InteractableComponent.h"
 
 // Sets default values
@@ -50,6 +51,18 @@ void AZoneMarkerActor::Populate()
 			if (Interactable) {
 				Interactable->bIsTarget = bIsTarget;
 				Interactable->OwnerZone = this;
+				if (!bIsTarget) 
+				{
+					UMeshComponent* Mesh = Spawned->FindComponentByClass<UMeshComponent>();
+					if (Mesh) {
+						UMaterialInstanceDynamic* NewMat = Mesh->CreateDynamicMaterialInstance(0);
+						if (NewMat) {
+							NewMat->SetVectorParameterValue(TEXT("TintColor"),FMath::Lerp(Pool->DecoyBaseColor, Pool->TargetColor, CamouflageTightness));
+						}
+					}
+					
+					
+				}
 			}
 			if (!Interactable) {
 				UE_LOG(LogTemp, Warning, TEXT("NPC not interactable."));
