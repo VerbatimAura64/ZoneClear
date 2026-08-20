@@ -24,7 +24,7 @@ public:
 	TArray<ATargetPoint*> SpawnPoints;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Zone", meta = (ClampMin = "0.0", ClampMax = "1.0"))
-		float CamouflageTightness = 0.2f;
+	float CamouflageTightness = 0.2f;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Zone")
 	bool bResolved = false;
@@ -40,6 +40,12 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = "Narrative")
 	FText FragmentText;
+
+	UPROPERTY(EditAnywhere, Category = "Gating")
+	AZoneMarkerActor* NextZone;
+
+	UPROPERTY(EditAnywhere, Category = "Gating")
+	AActor* DoorActor;
 
 private:
 	UPROPERTY()

@@ -89,6 +89,15 @@ void AZoneMarkerActor::OnTargetFound()
 	if (bResolved) return;
 	bResolved = true;
 	UE_LOG(LogTemp, Warning, TEXT("Target found! Zone resolved."));
+
+	if (DoorActor) {
+		DoorActor->SetActorHiddenInGame(true);
+		DoorActor->SetActorEnableCollision(false);
+	}
+
+	if (NextZone) {
+		NextZone->Populate();
+	}
 }
 
 TSubclassOf<AActor> AZoneMarkerActor::GetWeightedDecoy()
@@ -113,7 +122,7 @@ TSubclassOf<AActor> AZoneMarkerActor::GetWeightedDecoy()
 	}
 
 	return Pool->DecoyPrefabs.Last().Prefab;
-
+	
 }
 
 
